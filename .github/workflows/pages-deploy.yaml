@@ -16,7 +16,7 @@ jobs:
         with:
           useRollingCache: true
         env:
-          NODE_ENV=production
+          NODE_ENV: production
       - name: Build using parcel
         run: |
           npm run build-data

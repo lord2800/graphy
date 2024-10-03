@@ -1,0 +1,42 @@
+name: Pages deployment
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+        with:
+          useRollingCache: true
+        env:
+          NODE_ENV=production
+      - name: Build using parcel
+        run: |
+          npm run build-data
+          npm run build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist'
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

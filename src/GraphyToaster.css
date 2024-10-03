@@ -1,0 +1,53 @@
+dialog.toast[open] {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+dialog.toast {
+    background-color: #fff;
+    border-radius: 7px;
+    border: 1px solid #fff;
+    display: flex;
+    filter: drop-shadow(3px 3px 10px #202020);
+    flex-direction: row;
+    opacity: 0;
+    padding: 5px;
+    transform: scaleY(0);
+    transition: all 0.7s allow-discrete;
+}
+
+@starting-style {
+    dialog.toast[open] {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+}
+
+
+dialog.toast .icon {
+    border-radius: 7px;
+    display: inline-block;
+    font-size: 1.7em;
+    margin: 5px;
+    padding: 2px;
+}
+
+dialog.toast .message {
+    display: inline-block;
+    max-width: 75%;
+    overflow: hidden;
+    padding: 5px;
+    text-overflow: ellipsis;
+}
+
+dialog.toast .warning {
+    background-color: rgba(255, 255, 0, 0.27);
+    border: 1px solid rgba(255, 255, 0, 0.4);
+    color: yellow;
+}
+
+dialog.toast .error {
+    background-color: rgba(255, 0, 0, 0.27);
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    color: red;
+}

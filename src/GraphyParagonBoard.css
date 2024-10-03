@@ -1,0 +1,81 @@
+.paragon-board {
+    display: grid;
+    gap: 1px 1px;
+
+    grid-template-columns: repeat(var(--board-width), 1fr);
+
+    &.rotated-90 {
+        transform: rotate(90deg);
+    }
+
+    &.rotated-180 {
+        transform: rotate(180deg);
+    }
+
+    &.rotated-270 {
+        transform: rotate(270deg);
+    }
+}
+
+.paragon-node {
+    --node-height: 24px;
+    --node-width: 24px;
+    --selected-size: 3px;
+
+    height: var(--node-height);
+    width: var(--node-width);
+    color: #fff;
+    border: 1px solid gray;
+
+    &.Normal {
+        background-color: #464646;
+    }
+
+    &.Socket {
+        background-color: lightblue;
+    }
+
+    &.Magic {
+        background-color: #416496;
+    }
+
+    &.Rare {
+        background-color: #e1ab23;
+    }
+
+    &.Legendary {
+        background-color: #be561c;
+    }
+
+    &.selected {
+        height: calc(var(--node-height) - var(--selected-size) - 1);
+        width: calc(var(--node-width) - var(--selected-size) - 1);
+        border: var(--selected-size) solid black;
+    }
+
+    &.highlight {
+        height: calc(var(--node-height) - var(--selected-size) - 1);
+        width: calc(var(--node-width) - var(--selected-size) - 1);
+        border: var(--selected-size) solid red;
+    }
+
+    &.selected.highlight {
+        border-image: linear-gradient(90deg, black 0%, red 65%) 1;
+    }
+
+    &.starter,
+    &.gate {
+        background-color: aqua;
+    }
+}
+
+[data-tooltip]:hover::after {
+    display: block;
+    position: absolute;
+    content: attr(data-tooltip);
+    border: 1px solid black;
+    background: #eee;
+    padding: .25em;
+    color: #000;
+    margin: 16px;
+}

@@ -1,0 +1,13 @@
+{
+  "browserslist": "last 1 versions and not dead and fully supports es6-module",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  },
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel serve",
+    "build": "parcel build",
+    "update-data": "git submodule update --remote --merge && npm run build-data",
+    "build-data": "./build_data.mjs"
+  }
+}

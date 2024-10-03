@@ -1,0 +1,30 @@
+.selected-boards {
+    list-style: none;
+    margin: 1em 0;
+    padding-inline-start: 0;
+}
+
+.all-boards {
+    list-style: none;
+    margin: 1em 0;
+    padding-inline-start: 0;
+}
+
+.all-boards>li {
+    border: 2px solid #000;
+    margin: .25em .25em;
+    padding: 2px;
+    width: fit-content;
+}
+
+.all-boards>li .selected {
+    border: 2px solid #fff;
+}
+
+.selected-boards>li {
+    border: 2px solid #0060df;
+    filter: drop-shadow(3px 3px 10px #0060df);
+    margin: .25em .25em;
+    padding: 2px;
+    width: fit-content;
+}

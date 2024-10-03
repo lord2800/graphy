@@ -1,0 +1,6 @@
+dist
+.vscode/*
+!.vscode/launch.json
+.parcel-cache
+node_modules
+board-data.js

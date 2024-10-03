@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to firefox",
+            "type": "firefox",
+            "request": "attach",
+            "url": "http://localhost:1234/index.html",
+            "webRoot": "${workspaceFolder}/dist",
+            "pathMappings": [
+                {
+                    "url": "file:///__parcel_source_root/src",
+                    "path": "${workspaceFolder}/src"
+                }
+            ],
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*"
+            ]
+        },
+        {
+            "name": "Launch chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:1234/index.html",
+            "webRoot": "${workspaceFolder}/dist",
+            "server": {
+                "program": "start",
+                "runtimeExecutable": "npm"
+            },
+            "sourceMapPathOverrides": {
+                "/__parcel_source_root/*": "${workspaceFolder}/*"
+            },
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*"
+            ]
+        }
+    ]
+}

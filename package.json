@@ -6,7 +6,7 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel serve",
-    "build": "parcel build",
+    "build": "parcel build --public-url ${PUBLIC_URL:-/}",
     "update-data": "git submodule update --remote --merge && npm run build-data",
     "build-data": "./build_data.mjs"
   }

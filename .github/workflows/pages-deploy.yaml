@@ -20,7 +20,7 @@ jobs:
       - name: Build using parcel
         run: |
           npm run build-data
-          npm run build
+          PUBLIC_URL=/graphy npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

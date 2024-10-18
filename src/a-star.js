@@ -9,12 +9,7 @@ function clamp(min, calc, max) {
 
 export function numberSort(calc) {
     return clamp(-1, calc, 1);
-}
-
-function estimate(point, goal) {
-    // TODO much more robust estimation
-    return distance(point, goal);
-}
+};
 
 class Node {
     #parent = null;
@@ -95,7 +90,7 @@ class Node {
     set h(value) { this.#h = value; }
 }
 
-export function findPath(map, start, goal, maxAttempts) {
+export function findPath(map, start, goal, maxAttempts, estimator) {
     let open = [new Node(start, null, map)];
     let closed = [];
     let attempts = 0;
@@ -103,7 +98,6 @@ export function findPath(map, start, goal, maxAttempts) {
     while (open.length > 0) {
         const point = open.pop();
         if (point.node === goal) {
-            // we're done, reverse the path and return it
             return point.path;
         }
         closed.push(point);
@@ -113,7 +107,7 @@ export function findPath(map, start, goal, maxAttempts) {
                 return;
             }
 
-            adjacent.h = estimate(adjacent.node, goal);
+            adjacent.h = estimator(adjacent.node, goal);
 
             const openPoint = open.find(x => x.node === adjacent.node);
             if (openPoint !== undefined) {
@@ -134,4 +128,4 @@ export function findPath(map, start, goal, maxAttempts) {
 
     // path not found!
     return null;
-}
+};

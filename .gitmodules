@@ -1,3 +1,5 @@
 [submodule "d4data"]
 	path = d4data
 	url = git@github.com:DiabloTools/d4data.git
+	update = checkout
+	shallow = true

@@ -22,9 +22,13 @@ export default class GraphyApp extends HTMLElement {
         this.addEventListener('NodeSelected', e => this.pickNode(e.data.board, e.data.node));
         this.addEventListener('Solve', e => this.solve());
         this.#solverWorker.addEventListener('message', e => {
-            this.#toaster.toast({ level: 'warning', message: `Solved in ${e.data.duration}ms` });
-            this.#paragonGrid.solution = e.data.solution;
-            this.#paragonGrid.selected = this.#selected;
+            if (e.data.error) {
+                this.#toaster.toast({ level: 'error', message: e.data.error.message });
+            } else {
+                this.#toaster.toast({ level: 'warning', message: `Solved in ${e.data.duration}ms` });
+                this.#paragonGrid.solution = e.data.solution;
+                this.#paragonGrid.selected = this.#selected;
+            }
         });
 
         this.addEventListener('toast', e => this.#toaster.toast(e.data.toast));
